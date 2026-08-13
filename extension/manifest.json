@@ -1,0 +1,51 @@
+{
+  "manifest_version": 3,
+  "name": "Chat DOM Observer",
+  "version": "1.0.0",
+  "description": "Real-time conversation capture layer for AI chat interfaces (ChatGPT, Claude, Gemini). Extracted from Niroga.",
+  "permissions": [
+    "storage"
+  ],
+  "host_permissions": [
+    "https://chat.openai.com/*",
+    "https://chatgpt.com/*",
+    "https://claude.ai/*",
+    "https://gemini.google.com/*"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": [
+        "https://chat.openai.com/*",
+        "https://chatgpt.com/*"
+      ],
+      "js": [
+        "config.js",
+        "content-chatgpt.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://claude.ai/*"
+      ],
+      "js": [
+        "config.js",
+        "content-claude.js"
+      ],
+      "run_at": "document_idle"
+    },
+    {
+      "matches": [
+        "https://gemini.google.com/*"
+      ],
+      "js": [
+        "config.js",
+        "content-gemini.js"
+      ],
+      "run_at": "document_idle"
+    }
+  ]
+}

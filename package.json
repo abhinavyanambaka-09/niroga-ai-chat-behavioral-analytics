@@ -1,0 +1,14 @@
+{
+  "name": "niroga-ai-chat-behavioral-analytics",
+  "version": "1.0.0",
+  "description": "Niroga open-source capture layer: real-time conversation extraction across ChatGPT, Claude and Gemini (Chrome MV3).",
+  "private": true,
+  "scripts": {
+    "test": "playwright test",
+    "test:headed": "playwright test --headed"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.1"
+  },
+  "license": "MIT"
+}

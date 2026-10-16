@@ -1,6 +1,6 @@
 {
   "manifest_version": 3,
-  "name": "Chat DOM Observer",
+  "name": "Niroga Capture Layer",
   "version": "1.0.0",
   "description": "Real-time conversation capture layer for AI chat interfaces (ChatGPT, Claude, Gemini). Extracted from Niroga.",
   "permissions": [

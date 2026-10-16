@@ -102,9 +102,6 @@
       }
     }, (response) => {
       console.log('[Observer] Gemini capture response:', response?.success, 'listening:', response?.listening);
-      if (response?.success && response?.analysis) {
-      } else if (response?.listening) {
-      }
     });
   }
 

@@ -103,9 +103,6 @@
       }
     }, (response) => {
       console.log('[Observer] Claude capture response:', response?.success, 'listening:', response?.listening);
-      if (response?.success && response?.analysis) {
-      } else if (response?.listening) {
-      }
     });
   }
 

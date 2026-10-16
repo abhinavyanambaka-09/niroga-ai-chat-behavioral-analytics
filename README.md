@@ -1,6 +1,8 @@
 # Niroga — AI Chat Behavioral Analytics
 
-**[Niroga](https://myniroga.com)** analyzes AI conversations across ChatGPT, Claude, and
+[![CI](https://github.com/abhinavyanambaka-09/niroga-ai-chat-behavioral-analytics/actions/workflows/ci.yml/badge.svg)](https://github.com/abhinavyanambaka-09/niroga-ai-chat-behavioral-analytics/actions/workflows/ci.yml)
+
+**Niroga** analyzes AI conversations across ChatGPT, Claude, and
 Gemini to surface behavioral and emotional patterns — stress, burnout, cognitive load.
 
 **This repo is Niroga's open-source capture layer**: the Chrome extension that turns three
@@ -46,6 +48,26 @@ the background worker, which forwards to a configurable endpoint.
 Open `demo/mock-chat.html` in any browser. Add user messages and stream a mock
 assistant reply — the log panel shows buffering and debounced capture firing in
 real time using the same logic as the extension.
+
+## Tests
+
+The capture behaviour is pinned by Playwright tests that drive `demo/mock-chat.html`,
+which runs the same extraction, buffering and debounce logic as the content scripts:
+
+- role/content extraction from `data-message-author-role` nodes
+- one user message → 5s "listening" debounce, then exactly one capture
+- two user messages → 2s analysis debounce, the 5s timer is cancelled, one capture
+- a streaming assistant reply (many DOM mutations) collapses into a single capture
+- re-extraction is idempotent: edits that don't add a message don't grow the buffer
+
+```bash
+npm install
+npx playwright install chromium
+npm test
+```
+
+CI runs the suite on every push and pull request (`.github/workflows/ci.yml`) and
+validates that `extension/manifest.json` is Manifest V3.
 
 ## Load the extension
 

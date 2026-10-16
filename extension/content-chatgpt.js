@@ -62,9 +62,6 @@
       }
     }, (response) => {
       console.log('[Observer] Capture response:', response?.success, 'listening:', response?.listening);
-      if (response?.success && response?.analysis) {
-      } else if (response?.listening) {
-      }
     });
   }
 
